@@ -10,27 +10,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "webpack-dev-server --config build/webpack.dev.conf.js",
-    "clean": "rimraf dist",
-    "prebuild:prod": "npm run clean",
-    "build:prod": "cross-env NODE_ENV=production webpack -p --config build/webpack.prod.conf.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "bash .script/commit-msg.sh ${GIT_PARAMS}"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "eslint",
-      "git add"
-    ]
+    "start": "$npm_execpath run dev",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.conf.js",
+    "prebuild": "$npm_execpath build:clean",
+    "build": "cross-env NODE_ENV=production webpack -p --config config/webpack.prod.conf.js",
+    "build:analyze": "$npm_execpath build --analyze",
+    "build:clean": "rimraf dist"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
