@@ -1,25 +1,38 @@
 # Boilerplate React
 
-Boilerplate for react project
+This is a starter boilerplate or react using the following technologies:
+
+- React
+- React Router
+
 
 ## Getting Started
 
 ### Installation
 
+```bash
+npm install
+# or
+yarn install
+```
+
 ### Running Dev
+
+```bash
+npm start
+# or
+yarn start
+```
 
 ### Building and Running Production
 
+```bash
+npm run build
+# or
+yarn build
+```
 
 ## Project Structure
-
-
-##  What’s Included?
-
-
-
-
-
 
 ## References
 
