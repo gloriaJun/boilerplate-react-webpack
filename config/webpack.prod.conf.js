@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const isAnalyze = process.argv.includes('--analyze');
 
@@ -11,6 +11,6 @@ module.exports = merge(baseWebpackConfig, {
     chunkFilename: 'js/[name].[chunkhash].chunk.js',
   },
   plugins: [
-    ...(isAnalyze ? new BundleAnalyzerPlugin() : []),
+    ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
   ],
 });
