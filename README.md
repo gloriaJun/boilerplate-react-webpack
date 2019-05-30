@@ -4,11 +4,11 @@ This is a starter boilerplate or react using the following technologies:
 
 - React
 - React Router
+- ESLint + Prettier
 
+## Setup
 
-## Getting Started
-
-### Installation
+### Package Install
 
 ```bash
 npm install
@@ -16,7 +16,10 @@ npm install
 yarn install
 ```
 
-### Running Dev
+### Development mode
+
+Runs the app in development mode.
+Open `http://localhost:8080` to view it in the browser.
 
 ```bash
 npm start
@@ -24,12 +27,52 @@ npm start
 yarn start
 ```
 
-### Building and Running Production
+### Test
+
+Runs the test
+
+```bash
+npm run test
+# or
+yarn test
+```
+
+#### Test with watch
+
+Runs the test watcher in an interactive mode.
+
+```bash
+npm run test:watch
+# or
+yarn test:watch
+```
+
+#### Test with coverage
+
+Runs the test coverage.
+
+```bash
+npm run test:coverage
+# or
+yarn test:coverage
+```
+
+### Build
+
+Builds the app for production to the `build` folder.
 
 ```bash
 npm run build
 # or
 yarn build
+```
+
+### Deploy to gh-pages
+
+```bash
+npm run deploy
+# or
+yarn deploy
 ```
 
 ## Project Structure
