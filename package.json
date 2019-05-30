@@ -15,7 +15,11 @@
     "prebuild": "$npm_execpath run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.conf.js",
     "build:analyze": "$npm_execpath run build -- --analyze",
-    "build:clean": "rimraf dist"
+    "build:clean": "rimraf dist",
+    "predeploy": "$npm_execpath build",
+    "deploy": "gh-pages -d build",
+    "lint": "eslint 'src/**/*.{js,jsx}' --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
