@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
-const baseWebpackConfig = require('./webpack.base.conf');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const baseWebpackConfig = require('./webpack.base.conf');
 
 const isAnalyze = process.argv.includes('--analyze');
 

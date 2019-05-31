@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // utility
 const resolve = (...args) => path.resolve(__dirname, '..', ...args);
@@ -9,6 +10,9 @@ const SRC_DIR = resolve('src');
 const OUTPUT_DIR = resolve('dist');
 const TEMPLATE_DIR = resolve('public');
 const TEMPLATE_ENTRY_FILENAME = 'index.html';
+const PUBLIC_PATH = '/';
+
+const isDev = process.env.NODE_ENV !== 'production';
 
 const baseWebpackConfig = {
   target: 'web',
@@ -17,7 +21,7 @@ const baseWebpackConfig = {
   },
   output: {
     path: OUTPUT_DIR,
-    publicPath: '/',
+    publicPath: PUBLIC_PATH,
   },
   resolve: {
     modules: [SRC_DIR, resolve('node_modules')],
@@ -39,10 +43,22 @@ const baseWebpackConfig = {
         use: ['babel-loader', 'eslint-loader'],
       },
       {
-        test: /\.s?css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: (resourcePath, context) => {
+                // publicPath is the relative path of the resource to the context
+                // e.g. for ./css/admin/main.css the publicPath will be ../../
+                // while for ./css/main.css the publicPath will be ../
+                return (
+                  path.relative(path.dirname(resourcePath), context) +
+                  PUBLIC_PATH
+                );
+              },
+              hmr: isDev,
+            },
           },
           {
             loader: 'css-loader',
@@ -58,6 +74,7 @@ const baseWebpackConfig = {
               sourceMap: true,
             },
           },
+          'postcss-loader',
         ],
       },
     ],
@@ -67,6 +84,10 @@ const baseWebpackConfig = {
       template: resolve(TEMPLATE_DIR, TEMPLATE_ENTRY_FILENAME),
       favicon: resolve(TEMPLATE_DIR, 'favicon.ico'),
       filename: TEMPLATE_ENTRY_FILENAME,
+    }),
+    new MiniCssExtractPlugin({
+      filename: isDev ? '[name].css' : '[name].[hash].css',
+      chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
     }),
   ],
   optimization: {
@@ -79,6 +100,12 @@ const baseWebpackConfig = {
           name: 'vendor',
           enforce: true,
           test: /[\\/]node_modules[\\/]/,
+        },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
         },
       },
     },
