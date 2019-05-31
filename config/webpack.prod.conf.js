@@ -10,7 +10,5 @@ module.exports = merge(baseWebpackConfig, {
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].chunk.js',
   },
-  plugins: [
-    ...(isAnalyze ? [new BundleAnalyzerPlugin()] : []),
-  ],
+  plugins: [...(isAnalyze ? [new BundleAnalyzerPlugin()] : [])],
 });

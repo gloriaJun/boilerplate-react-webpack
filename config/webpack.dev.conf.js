@@ -10,8 +10,7 @@ module.exports = merge(baseWebpackConfig, {
     chunkFilename: 'js/[name].[hash].chunk.js',
   },
   devtool: 'inline-source-map',
-  plugins: [
-  ],
+  plugins: [],
   devServer: {
     host: 'localhost',
     port: PORT, // default port is 3000

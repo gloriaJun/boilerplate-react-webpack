@@ -5,17 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const resolve = (...args) => path.resolve(__dirname, '..', ...args);
 
 // constant
-const PROJECT_ROOT = resolve('');
 const SRC_DIR = resolve('src');
 const OUTPUT_DIR = resolve('dist');
 const TEMPLATE_DIR = resolve('public');
 const TEMPLATE_ENTRY_FILENAME = 'index.html';
 
 const baseWebpackConfig = {
-  context: PROJECT_ROOT,
   target: 'web',
   entry: {
-    app: ['./src/index.js',],
+    app: [resolve(SRC_DIR, 'index.js')],
   },
   output: {
     path: OUTPUT_DIR,
@@ -32,7 +30,7 @@ const baseWebpackConfig = {
     rules: [
       {
         test: /\.jsx?$/,
-        include: SRC_DIR,
+        exclude: /node_modules/,
         use: ['babel-loader'],
       },
     ],
