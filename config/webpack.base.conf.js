@@ -22,10 +22,10 @@ const baseWebpackConfig = {
     publicPath: '/',
   },
   resolve: {
-    modules: [
-      'src',
-      "node_modules"
-    ],
+    modules: [SRC_DIR, resolve('node_modules')],
+    alias: {
+      '@components': resolve(SRC_DIR, 'components'),
+    },
     extensions: ['.js', '.jsx', '.json'],
   },
   module: {
