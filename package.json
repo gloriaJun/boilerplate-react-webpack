@@ -2,10 +2,11 @@
   "name": "boilerplate-react",
   "version": "1.0.0",
   "description": "boilerplate for react",
+  "homepage": "https://gloriajun.github.io/<repository-name>/",
   "author": "pureainu@gmail.com",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/gloriaJun/boilerplate-react"
   },
   "main": "index.js",
   "license": "MIT",
