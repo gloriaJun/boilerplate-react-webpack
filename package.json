@@ -25,6 +25,13 @@
     "lint": "eslint 'src/**/*.{js,jsx}' --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
   },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
@@ -64,11 +71,10 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0"
   },
-  "lint-staged": {
-    "**/*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
