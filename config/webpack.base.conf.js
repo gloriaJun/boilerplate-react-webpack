@@ -26,7 +26,7 @@ const baseWebpackConfig = {
   resolve: {
     modules: [SRC_DIR, resolve('node_modules')],
     alias: {
-      '@components': resolve(SRC_DIR, 'components'),
+      '@/components': resolve(SRC_DIR, 'components'),
     },
     extensions: ['.js', '.jsx', '.json'],
   },
