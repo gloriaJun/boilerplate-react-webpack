@@ -33,6 +33,33 @@ const baseWebpackConfig = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader'],
+      },
+      // {
+      //   test: /\.s?css$/,
+      //   use: [
+      //     {
+      //       loader: 'style-loader',
+      //     },
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         camelCase: true,
+      //         sourceMap: true,
+      //       },
+      //     },
+      //     {
+      //       loader: 'sass-loader',
+      //       options: {
+      //         sourceMap: true,
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: [
