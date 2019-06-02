@@ -17,7 +17,7 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.conf.js",
     "build:analyze": "$npm_execpath run build -- --analyze",
     "build:clean": "rimraf dist",
-    "test": "jest test --config jest.config.js",
+    "test": "jest --config jest.config.js",
     "test:watch": "$npm_execpath test --watch",
     "test:coverage": "$npm_execpath test --coverage --colors",
     "predeploy": "$npm_execpath build",
