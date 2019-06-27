@@ -1,6 +1,6 @@
 # Boilerplate React
 
-[![Build Status](https://travis-ci.com/gloriaJun/boilerplate-react-webpack.svg?branch=master)](https://travis-ci.com/gloriaJun/boilerplate-react-webpack)
+[![Build Status](https://travis-ci.com/gloriaJun/boilerplate-react-webpack.svg?branch=master)](https://travis-ci.com/gloriaJun/boilerplate-react-webpack) [![Greenkeeper badge](https://badges.greenkeeper.io/gloriaJun/boilerplate-react-webpack.svg)](https://greenkeeper.io/)
 
 This is a starter boilerplate or react using the following technologies:
 
