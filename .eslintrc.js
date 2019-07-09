@@ -119,12 +119,10 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
+      node: {
+        moduleDirectory: ['node_modules', 'src'],
+      },
       webpack: './config/webpack.base.conf.js',
     },
-    // 'import/resolver': {
-    //   node: {
-    //     paths: [path.resolve(__dirname, 'src')],
-    //   },
-    // },
   },
 };

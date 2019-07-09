@@ -29,7 +29,7 @@ const baseWebpackConfig = {
     publicPath: PUBLIC_PATH,
   },
   resolve: {
-    modules: ['node_modules', resolve(SRC_DIRNAME)],
+    modules: ['node_modules', SRC_DIRNAME, 'test'],
     extensions: ['.js', '.jsx', '.json'],
   },
   module: {
