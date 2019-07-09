@@ -1,42 +1,39 @@
+'use strict';
+
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // utility
-const resolve = (...args) => path.resolve(__dirname, '..', ...args);
+const resolve = (...args) => path.resolve(__dirname, ...args);
 
 // constant
-const SRC_DIR = resolve('src');
-const OUTPUT_DIR = resolve('dist');
-const TEMPLATE_DIR = resolve('public');
+const SRC_DIRNAME = 'src';
+const OUTPUT_DIR = resolve('..', 'dist');
+const PUBLIC_PATH = '';
+const TEMPLATE_DIRNAME = 'public';
 const TEMPLATE_ENTRY_FILENAME = 'index.html';
-const PUBLIC_PATH = '/';
 
 const isDev = process.env.NODE_ENV !== 'production';
+const config = require('dotenv').config(resolve('..', '.env'));
 
 const baseWebpackConfig = {
   target: 'web',
+  context: resolve('..'),
   entry: {
-    app: [resolve(SRC_DIR, 'index.js')],
+    app: [`./${SRC_DIRNAME}/index.js`],
   },
   output: {
     path: OUTPUT_DIR,
     publicPath: PUBLIC_PATH,
   },
   resolve: {
-    modules: [SRC_DIR, resolve('node_modules')],
-    alias: {
-      '@/components': resolve(SRC_DIR, 'components'),
-    },
+    modules: ['node_modules', resolve(SRC_DIRNAME)],
     extensions: ['.js', '.jsx', '.json'],
   },
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -81,13 +78,16 @@ const baseWebpackConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(TEMPLATE_DIR, TEMPLATE_ENTRY_FILENAME),
-      favicon: resolve(TEMPLATE_DIR, 'favicon.ico'),
+      template: `${TEMPLATE_DIRNAME}/${TEMPLATE_ENTRY_FILENAME}`,
+      favicon: `${TEMPLATE_DIRNAME}/favicon.ico`,
       filename: TEMPLATE_ENTRY_FILENAME,
     }),
     new MiniCssExtractPlugin({
       filename: isDev ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
+    }),
+    new webpack.EnvironmentPlugin({
+      ...config.parsed,
     }),
   ],
   optimization: {
