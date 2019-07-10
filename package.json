@@ -23,6 +23,7 @@
     "predeploy": "$npm_execpath build",
     "deploy": "gh-pages -d build",
     "lint": "eslint 'src/**/*.{js,jsx}' --fix",
+    "lint:debug": "DEBUG=eslint-plugin-import:* $npm_execpath lint",
     "format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
   },
   "lint-staged": {
@@ -34,6 +35,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.0",
@@ -44,8 +48,14 @@
     "eslint": "^6.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^6.0.0",
+    "css-loader": "^2.1.1",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-loader": "^2.1.2",
-    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",

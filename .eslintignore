@@ -4,3 +4,4 @@ config/
 script/
 public/
 postcss.config.js
+*.conf.js

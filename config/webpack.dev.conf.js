@@ -15,7 +15,7 @@ module.exports = merge(baseWebpackConfig, {
     host: 'localhost',
     port: PORT, // default port is 3000
     historyApiFallback: true,
-    open: true,
+    open: false,
     hot: true,
   },
 });
